@@ -18,8 +18,6 @@ class SspanelQd(object):
         # 登录信息
         self.email = '*******@qq.com'
         self.password = 'x******'
-        # Server酱推送
-        self.sckey = ''
         # 酷推qq推送
         self.ktkey = ''
         # ServerTurbo推送
@@ -100,17 +98,6 @@ class SspanelQd(object):
         kt_url = 'https://push.xuthus.cc/send/' + str(self.ktkey)
         data = ('签到完成，点击查看详细信息~\n' + str(msg)).encode("utf-8")
         requests.post(kt_url, data=data)
-
-    # Server酱推送
-    def serverTurbo_send(self, msg):
-        if self.sckey == '':
-            return
-        server_url = "https://sc.ftqq.com/" + str(self.sckey) + ".send"
-        data = {
-            'text': "签到完成，点击查看详细信息~",
-            'desp': msg
-        }
-        requests.post(server_url, data=data)
 
     def main(self):
         msg = self.checkin()
