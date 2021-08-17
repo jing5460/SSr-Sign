@@ -24,6 +24,10 @@ class SspanelQd(object):
         self.SendKey = ''
         # Qmsg私聊推送
         self.QmsgKey = ''
+        # Telegram私聊推送
+        self.tele_api_url = 'https://api.telegram.org'
+        self.tele_bot_token = ''
+        self.tele_user_id = ''
 
     def checkin(self):
         email = self.email.split('@')
@@ -98,6 +102,17 @@ class SspanelQd(object):
         kt_url = 'https://push.xuthus.cc/send/' + str(self.ktkey)
         data = ('签到完成，点击查看详细信息~\n' + str(msg)).encode("utf-8")
         requests.post(kt_url, data=data)
+    
+    def tele_send(self, msg: str):
+        if self.tele_bot_token == '':
+            return
+        tele_url = f"{self.tele_api_url}/bot{self.tele_bot_token}/sendMessage"
+        data = {
+            'chat_id': self.tele_user_id,
+            'parse_mode': "Markdown",
+            'text': msg
+        }
+        requests.post(tele_url, data=data)
 
     def main(self):
         msg = self.checkin()
@@ -106,8 +121,8 @@ class SspanelQd(object):
         else:
             self.server_send(msg)
             self.kt_send(msg)
-            self.serverTurbo_send(msg)
             self.Qmsg_send(msg)
+            self.tele_send(msg)
 
 
 # 云函数入口
