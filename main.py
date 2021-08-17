@@ -13,11 +13,14 @@ requests.packages.urllib3.disable_warnings()
 
 class SspanelQd(object):
     def __init__(self):
+        ###############登录信息配置区###############
         # 机场地址
         self.base_url = 'http://****'
         # 登录信息
         self.email = '*******@qq.com'
         self.password = 'x******'
+        ###########################################
+        ##############推送渠道配置区###############
         # 酷推qq推送
         self.ktkey = ''
         # ServerTurbo推送
@@ -28,6 +31,7 @@ class SspanelQd(object):
         self.tele_api_url = 'https://api.telegram.org'
         self.tele_bot_token = ''
         self.tele_user_id = ''
+        ##########################################
 
     def checkin(self):
         email = self.email.split('@')
