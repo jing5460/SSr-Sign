@@ -7,6 +7,7 @@
 - 20210221-增加Qmsg私聊推送
 - 20210718-移除Server酱微信推送
 - 20210817-[a08381](https://github.com/a08381)新增Telegram Bot推送
+- 20210825-[Thund1R](https://github.com/Thund1R)新增Pushplus推送
 
 # 机场推荐
 [跑路云](https://owo-qvq-uvu-owo.xn--mes358a082apda.com/auth/register?code=rQot) - 可以白嫖流量  
