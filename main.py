@@ -7,8 +7,9 @@
 """
 import requests
 import re
+import json
 
-requests.packages.urllib3.disable_warnings()
+requests.urllib3.disable_warnings()
 
 
 class SspanelQd(object):
@@ -31,6 +32,8 @@ class SspanelQd(object):
         self.tele_api_url = 'https://api.telegram.org'
         self.tele_bot_token = ''
         self.tele_user_id = ''
+        # Pushplus私聊推送
+        self.push_token = ''
         ##########################################
 
     def checkin(self):
@@ -117,6 +120,24 @@ class SspanelQd(object):
             'text': msg
         }
         requests.post(tele_url, data=data)
+        
+    # Pushplus推送
+    def pushplus_send(self,msg):
+        if self.push_token == '':
+            return
+        token = self.push_token 
+        title= '机场签到通知'
+        content = msg
+        url = 'http://www.pushplus.plus/send'
+        data = {
+            "token":token,
+            "title":title,
+            "content":content
+            }
+        body=json.dumps(data).encode(encoding='utf-8')
+        headers = {'Content-Type':'application/json'}
+        requests.post(url,data=body,headers=headers)
+
 
     def main(self):
         msg = self.checkin()
@@ -127,6 +148,7 @@ class SspanelQd(object):
             self.kt_send(msg)
             self.Qmsg_send(msg)
             self.tele_send(msg)
+            self.pushplus_send(msg)
 
 
 # 云函数入口
