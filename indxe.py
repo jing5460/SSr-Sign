@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@Time ： 2020/9/15 9:52
+@Time ： 2020/9/15 9:52 旧版
 @Auth ： Ne-21
 @Des : sspanel自动每日签到脚本
 @File ：sspanel_qd.py
