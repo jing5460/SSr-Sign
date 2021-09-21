@@ -17,4 +17,4 @@
 
 [ADSL.Cloud两元机场](https://portal.adsl.cloud/auth/register?code=TZIx) - 超级稳定,解锁NF
 
-[虚坤粉V2](https://www.cxkv2.xyz/auth/register?code=dENk) - 超级稳定,解锁NF
+[虚坤粉V2](https://www.cxkv2.xyz/auth/register?code=dENk) - 无限8K,每天900T
